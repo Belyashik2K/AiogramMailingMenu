@@ -83,7 +83,7 @@ async def get_admins(self) -> list[int]:
 ```python
 from mailing import *
 ```
-5. Register mailing router to dispatcher
+5. Include mailing router in dispatcher
 ```python
 import asyncio
 

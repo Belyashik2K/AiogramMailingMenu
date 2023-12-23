@@ -88,7 +88,7 @@ from mailing import *
 ```python
 import asyncio
 
-from initialization import dp
+from initialization import dp, bot
 from mailing import *
 
 async def main():
@@ -200,7 +200,7 @@ from mailing import *
 ```python
 import asyncio
 
-from initialization import dp
+from initialization import dp, bot
 from mailing import *
 
 async def main():
@@ -224,6 +224,6 @@ async def admin_menu(message: types.Message):
 async def back_to_admin_menu(call: types.CallbackQuery):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await message.answer("Admin-menu. But with only one button.", reply_markup=markup)
+  await call.message.edit_text(text="Admin-menu. But with only one button.", reply_markup=markup)
 ```
 7. If all the steps have been completed, then the mailing menu has been successfully installed.

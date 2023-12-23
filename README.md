@@ -106,13 +106,13 @@ if __name__ == '__main__':
 async def admin_menu(message: types.Message):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await message.answer("Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
+  await message.answer(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
 
 @user_router.callback_query(F.data=="back_to_admin")
 async def back_to_admin_menu(call: types.CallbackQuery):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await message.answer("Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
+  await call.message.edit_text(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
 ```
 7. Если все шаги выполнены правильно, значит меню рассылки успешно установлено.
 

@@ -131,6 +131,9 @@ async def mailing(call: types.CallbackQuery, state: FSMContext):
     users = await Config.UserDB.DB_INSTANCE.get_users_list()
     mailing_info = await db.get_mailing()
     content_type = await db.get_content_type()
+    if content_type == 'text' and mailing_info.text == 'Не установлен':
+        await call.answer(MT.mailing_not_set, show_alert=True)
+        return
     await call.message.edit_text(MT.mailing_start.format(0, 0))
     result = await sender.mailing(mailing_info=mailing_info,
                                   content_type=content_type,

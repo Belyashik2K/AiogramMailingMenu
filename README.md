@@ -108,13 +108,13 @@ if __name__ == '__main__':
 async def admin_menu(message: types.Message):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await message.answer(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
+  await message.answer(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup.as_markup())
 
 @user_router.callback_query(F.data=="back_to_admin")
 async def back_to_admin_menu(call: types.CallbackQuery):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await call.message.edit_text(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup)
+  await call.message.edit_text(text="Админ-меню. Но только с одной кнопкой.", reply_markup=markup.as_markup())
 ```
 8. Если все шаги выполнены **правильно**, значит меню рассылки **успешно** **установлено**.
 
@@ -224,12 +224,12 @@ if __name__ == '__main__':
 async def admin_menu(message: types.Message):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await message.answer("Admin-menu. But with only one button.", reply_markup=markup)
+  await message.answer("Admin-menu. But with only one button.", reply_markup=markup.as_markup())
 
 @user_router.callback_query(F.data=="back_to_admin")
 async def back_to_admin_menu(call: types.CallbackQuery):
   markup = InlineKeyboardBuilder()
   markup.button(text="Mailing", callback_data="mailing")
-  await call.message.edit_text(text="Admin-menu. But with only one button.", reply_markup=markup)
+  await call.message.edit_text(text="Admin-menu. But with only one button.", reply_markup=markup.as_markup())
 ```
 **8.** If **all** the steps **have** **been** **completed**, then the **mailing** **menu** has been **successfully installed**.

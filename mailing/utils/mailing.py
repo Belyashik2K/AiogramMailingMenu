@@ -100,6 +100,7 @@ class MailingFunctions:
         for user_id in users:
             try:
                 await self.send_mailing_message(user_id, mailing_info, content_type)
+                await asyncio.sleep(0.5)
                 alive_users += 1
             except TelegramNotFound:
                 died_users += 1
@@ -109,8 +110,12 @@ class MailingFunctions:
                 alive_users += 1
             except Exception as e:
                 died_users += 1
-            await self._bot.edit_message_text(MT.mailing_start.format(alive_users, died_users), chat_id, message_id)
-        
+            
+            try:
+                await self._bot.edit_message_text(MT.mailing_start.format(alive_users, died_users), chat_id, message_id)
+            except TelegramRetryAfter as e:
+                await asyncio.sleep(e.retry_after)
+                await self._bot.edit_message_text(MT.mailing_start.format(alive_users, died_users), chat_id, message_id)
         await self._bot.edit_message_text(MT.mailing_end.format(alive_users, died_users), chat_id, message_id)
         
         return alive_users, died_users

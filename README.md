@@ -29,6 +29,14 @@ git clone https://github.com/Belyashik2K/AiogramMailingMenu.git .
 ```python
 pip install sqlalchemy[asyncio] aiogram
 ```
+  — Для работы с **SQLite**
+  ```python
+  pip install aiosqlite
+  ```
+  — Для работы с **PostgreSQL**
+```python
+pip install asyncpg
+```
 **3.** **Откройте** mailing/config.py и **замените** **данные** **переменных** своими, **например:**
 ```python
 admin_menu_data = 'back_to_admin' # Callback data для кнопки «↪️ Назад» (возврат в админ-меню)
@@ -144,6 +152,14 @@ git clone https://github.com/Belyashik2K/AiogramMailingMenu.git .
 **2.** **Install** the **necessary** **dependencies** for the menu **to work**
 ```python
 pip install sqlalchemy[asyncio] aiogram
+```
+  — For **SQLite** database
+  ```python
+  pip install aiosqlite
+  ```
+  — For **PostgreSQL** database
+```python
+pip install asyncpg
 ```
 **3.** **Open** _mailing/config.py_ and **replace** **vars** data **with** **your own**, **example**
 ```python

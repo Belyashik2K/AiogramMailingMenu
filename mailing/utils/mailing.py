@@ -100,7 +100,6 @@ class MailingFunctions:
         for user_id in users:
             try:
                 await self.send_mailing_message(user_id, mailing_info, content_type)
-                await asyncio.sleep(0.5)
                 alive_users += 1
             except TelegramNotFound:
                 died_users += 1

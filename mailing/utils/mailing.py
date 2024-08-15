@@ -111,10 +111,22 @@ class MailingFunctions:
                 died_users += 1
             
             try:
-                await self._bot.edit_message_text(MT.mailing_start.format(alive_users, died_users), chat_id, message_id)
+                await self._bot.edit_message_text(
+                    text=MT.mailing_start.format(alive_users, died_users),
+                    chat_id=chat_id,
+                    message_id=message_id
+                )
             except TelegramRetryAfter as e:
                 await asyncio.sleep(e.retry_after)
-                await self._bot.edit_message_text(MT.mailing_start.format(alive_users, died_users), chat_id, message_id)
-        await self._bot.edit_message_text(MT.mailing_end.format(alive_users, died_users), chat_id, message_id)
+                await self._bot.edit_message_text(
+                    text=MT.mailing_start.format(alive_users, died_users),
+                    chat_id=chat_id,
+                    message_id=message_id
+                )
+        await self._bot.edit_message_text(
+            text=MT.mailing_end.format(alive_users, died_users),
+            chat_id=chat_id,
+            message_id=message_id
+        )
         
         return alive_users, died_users

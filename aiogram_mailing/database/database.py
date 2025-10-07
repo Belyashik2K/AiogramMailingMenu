@@ -3,14 +3,17 @@ from contextlib import asynccontextmanager
 from sqlalchemy import select, insert, update, delete
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
-from ..config import Config
 from .models import *
 
 class Database:
-    def __init__(self):
+    def __init__(
+            self,
+            database_url: str
+    ):
         """Initialize database."""
 
-        self._url = Config.DB.DB_URL
+        self._path = database_url
+        self._url = f"sqlite+aiosqlite:///{self._path}"
 
         self._engine = create_async_engine(
             url=self._url,

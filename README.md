@@ -91,24 +91,29 @@ async def get_admins(self) -> list[int]:
         return [user_id[0] for user_id in result]
 ```
 **5.** **Откройте** свой **основной** файл и **импортируйте** все функции из модуля рассылки.
+
 ```python
-from mailing import *
+from aiogram_mailing import *
 ```
 **6.** **Подключите** **роутер** рассылки к диспетчеру
+
 ```python
 import asyncio
 
-from initialization import dp, bot
-from mailing import *
+from initialization import dp,
+  bot
+from aiogram_mailing import *
+
 
 async def main():
-    dp.include_router(mailing_router)
-    # ...
-    # Здесь Ваш код...
-    await dp.start_polling(bot)
+  dp.include_router(mailing_router)
+  # ...
+  # Здесь Ваш код...
+  await dp.start_polling(bot)
+
 
 if __name__ == '__main__':
-    asyncio.run(main())
+  asyncio.run(main())
 ```
 **7.** **Создайте** **кнопку** с данными, которые вы установили в _mailing/config.py_, и **создайте** **обработчик**, который **обрабатывает** кнопку возврата в админ-меню.
 ```python
@@ -215,24 +220,29 @@ async def get_admins(self) -> list[int]:
         return [user_id[0] for user_id in result]
 ```
 **5.** **Open** your **main** **file** and **import** **all** functions from **mailing**
+
 ```python
-from mailing import *
+from aiogram_mailing import *
 ```
 **6.** **Include** **mailing** **router** in dispatcher
+
 ```python
 import asyncio
 
-from initialization import dp, bot
-from mailing import *
+from initialization import dp,
+  bot
+from aiogram_mailing import *
+
 
 async def main():
-    dp.include_router(mailing_router)
-    # ...
-    # Here is your own code
-    await dp.start_polling(bot)
+  dp.include_router(mailing_router)
+  # ...
+  # Here is your own code
+  await dp.start_polling(bot)
+
 
 if __name__ == '__main__':
-    asyncio.run(main())
+  asyncio.run(main())
 ```
 **7.** **Create** **inline** **button** with data, which you set in_ mailing/config.py_ and **create** **handler** which **handle** **callback** of **exit** button
 ```python

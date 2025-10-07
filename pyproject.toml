@@ -1,0 +1,39 @@
+[project]
+name = "aiogram-mailing"
+version = "0.1.0"
+description = "Multifunctional modular mailing menu for bots on aiogram v3.x.x"
+authors = [
+    { name = "Belyashik2K", email = "work@belyashik2k.ru" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiogram (>=3.22.0,<4.0.0)",
+    "sqlalchemy[async] (>=2.0.43,<3.0.0)",
+    "aiosqlite (>=0.21.0,<0.22.0)",
+    "asyncpg (>=0.30.0,<0.31.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+aiogram = ">=3.22.0,<4.0.0"
+sqlalchemy = { extras = ["async"], version = ">=2.0.43,<3.0.0" }
+
+aiosqlite = { version = ">=0.21.0,<0.22.0", optional = true }
+asyncpg = { version = ">=0.30.0,<0.31.0", optional = true }
+
+[tool.poetry.extras]
+sqlite = ["aiosqlite"]
+postgres = ["asyncpg"]
+
+[tool.poetry]
+exclude = [
+    'test.py',
+    '.venv/',
+]

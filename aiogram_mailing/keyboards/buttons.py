@@ -1,5 +1,3 @@
-from ..config import Config
-
 class MailingButtons:
 
     class Back:
@@ -25,7 +23,7 @@ class MailingButtons:
 class MailingData:
     
     class Back:
-        back_to_mailing = Config.mailing_button_data
+        back_to_mailing = "backtomailing"
 
     class Menu:
         start = 'mmstart'

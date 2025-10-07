@@ -10,3 +10,6 @@ env
 build/
 develop-eggs/
 dist/
+.idea/
+*.db
+*.sqlite3

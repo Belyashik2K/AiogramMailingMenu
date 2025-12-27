@@ -47,11 +47,23 @@ async def register_handlers(
     ) -> None:
         try:
             mailings = await am_mailing_service.get_all_mailings()
-        except Exception as e: # TODO: specify exception
+        except Exception as e:  # TODO: specify exception
             await callback.answer(
                 texts.errors.no_mailings_found,
             )
             return
+
+    @mailing_router.callback_query(
+        MailingMainMenuCallback.filter(
+            F.action.is_(MailingMainMenuActionEnum.CREATE_MAILING)
+        )
+    )
+    async def create_mailing_menu(
+            callback: types.CallbackQuery,
+    ) -> None:
+        await callback.answer(
+            "Work in progress...",
+        )
 
     @mailing_router.callback_query(
         MailingMainMenuCallback.filter(

@@ -1,2 +1,7 @@
-from .interfaces import MailingUsersSource
-from .main import AiogramMailingMenu
+from aiogram_mailing.core.interfaces import MailingUsersSource
+from .__main__ import AiogramMailingMenu
+
+__all__ = [
+    'AiogramMailingMenu',
+    'MailingUsersSource'
+]

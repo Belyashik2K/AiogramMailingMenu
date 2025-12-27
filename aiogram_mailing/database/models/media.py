@@ -12,7 +12,7 @@ from sqlalchemy.orm import (
 )
 
 from aiogram_mailing.database.models.base import Base
-from aiogram_mailing.enums import MediaTypeEnum
+from aiogram_mailing.core.enums import MediaTypeEnum
 from ..mixins import IntPKMixin
 
 if TYPE_CHECKING:
@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 
 class MailingMediaModel(IntPKMixin, Base):
     __tablename__ = "mailing_media"
-    
+
     mailing_id: Mapped[int] = mapped_column(
         ForeignKey("mailings.id"), index=True
     )

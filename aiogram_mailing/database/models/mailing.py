@@ -13,7 +13,7 @@ from sqlalchemy.orm import (
 )
 
 from aiogram_mailing.database.mixins import IntPKMixin
-from aiogram_mailing.core.enums import MailingStatusEnum
+from aiogram_mailing.database.enums import MailingStatusEnum
 from aiogram_mailing.database.models.base import Base
 from aiogram_mailing.core.utils import get_current_dt
 

@@ -10,6 +10,8 @@ class MailingMenuButtons:
     manage_mailing_media: str
     manage_mailing_buttons: str
     schedule_mailing: str
+    reset_mailing: str
+    close_menu: str
 
 
 @dataclass(slots=True)

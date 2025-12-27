@@ -13,7 +13,9 @@ RU_BUTTONS = MailingMenuButtons(
     edit_mailing_text="✍️ Текст",
     manage_mailing_media="🖼️ Медиа",
     manage_mailing_buttons="📌 Кнопки",
-    schedule_mailing="⏰ Запланировать",
+    schedule_mailing="⏰ Запланировать рассылку",
+    reset_mailing="🔄 Сбросить информацию о рассылке",
+    close_menu="❌ Закрыть меню",
 )
 # ============================
 

@@ -12,7 +12,7 @@ from sqlalchemy.orm import (
 )
 
 from aiogram_mailing.database.models.base import Base
-from aiogram_mailing.core.enums import MediaTypeEnum
+from aiogram_mailing.database.enums import MediaTypeEnum
 from ..mixins import IntPKMixin
 
 if TYPE_CHECKING:

@@ -1,21 +1,41 @@
-from abc import ABC, abstractmethod
-from typing import Awaitable
+from abc import (
+    ABC,
+    abstractmethod,
+)
+from typing import (
+    Sequence,
+)
 
 
-class UserDataSource(ABC):
+class MailingUsersSource(ABC):
 
     @abstractmethod
-    def get_users_count(self) -> Awaitable[int]:
-        """Get users count."""
+    async def count_recipients(self) -> int:
+        """Get users count to whom mailing will be sent.
+
+        Function should return total number of users to whom mailing will be sent.
+
+        Returns:
+            int: Total number of users.
+        """
         ...
 
     @abstractmethod
-    def get_user_ids(self) -> Awaitable[list[int]]:
-        """Get all user ids for mailing."""
+    async def get_recipients(self) -> Sequence[int]:
+        """Get all user IDs to whom mailing will be sent.
+
+        Returns:
+            Sequence[int]: Sequence of user ids.
+        """
         ...
 
     @abstractmethod
-    def get_admin_ids(self) -> Awaitable[list[int]]:
-        """Get all admin ids."""
-        ...
+    async def get_admins(self) -> Sequence[int]:
+        """Get IDs of admins with access to the mailing menu.
 
+        Admin in this context is a user who has access to the mailing menu.
+
+        Returns:
+            Sequence[int]: Sequence of admin ids.
+        """
+        ...

@@ -1,5 +1,5 @@
-from .user_source import UserDataSource
+from .user_source import MailingUsersSource
 
 __all__ = [
-    "UserDataSource"
+    "MailingUsersSource"
 ]

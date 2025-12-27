@@ -9,19 +9,26 @@ class MailingMenuButtons:
     edit_mailing_text: str
     manage_mailing_media: str
     manage_mailing_buttons: str
-    schedule_mailing: str
     reset_mailing: str
+
+    mailing_list: str
+    create_mailing: str
+    menu_author_link: str
+
     close_menu: str
 
 
 @dataclass(slots=True)
 class MailingMenuMessages:
-    mailing_menu: str
+    mailing_main_menu: str
+
+    mailing_scheduled_at: str
+    mailing_not_scheduled: str
 
 
 @dataclass(slots=True)
 class MailingMenuErrors:
-    ...
+    no_mailings_found: str
 
 
 @dataclass(slots=True)

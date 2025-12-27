@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from typing import AsyncIterator
 
 from sqlalchemy.ext.asyncio import (
@@ -33,6 +34,7 @@ class SQLAlchemyDatabaseHelper:
             expire_on_commit=False,
         )
 
+    @asynccontextmanager
     async def get_session(self) -> AsyncIterator[AsyncSession]:
         async with self.session_factory() as session:
             yield session

@@ -13,29 +13,38 @@ RU_BUTTONS = MailingMenuButtons(
     edit_mailing_text="✍️ Текст",
     manage_mailing_media="🖼️ Медиа",
     manage_mailing_buttons="📌 Кнопки",
-    schedule_mailing="⏰ Запланировать рассылку",
     reset_mailing="🔄 Сбросить информацию о рассылке",
+    mailing_list="📋 Список рассылок",
+    create_mailing="➕ Создать рассылку",
+    menu_author_link="с ❤️‍🔥 от Belyashik2K",
     close_menu="❌ Закрыть меню",
 )
 # ============================
 
 # ========= MESSAGES =========
 
-mailing_menu_text = """
-📬 *Меню рассылки*
+mailing_main_menu_text = """
+📬 *Меню управления рассылками*
 
-Выберите действие ниже:
+Выберите действие в меню ниже:
 """
 
+mailing_scheduled_at = "⏰ Рассылка запланирована на: {scheduled_at}"
+mailing_not_scheduled = "⏰ Рассылка не запланирована"
+
 RU_MESSAGES = MailingMenuMessages(
-    mailing_menu=mailing_menu_text
+    mailing_main_menu=mailing_main_menu_text,
+    mailing_scheduled_at=mailing_scheduled_at,
+    mailing_not_scheduled=mailing_not_scheduled,
 )
 
 # ============================
 
 # ========= ERRORS =========
 
-RU_ERRORS = MailingMenuErrors()
+RU_ERRORS = MailingMenuErrors(
+    no_mailings_found="⚠️ Нет доступных для просмотра рассылок",
+)
 
 # ============================
 

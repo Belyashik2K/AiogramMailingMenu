@@ -4,16 +4,16 @@ from aiogram.types import (
 )
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from aiogram_mailing.ui.keyboards.callbacks import MailingMenuCallback
-from aiogram_mailing.ui.keyboards.callbacks.menu import MailingMenuActionEnum
+from aiogram_mailing.ui.keyboards.callbacks import MailingMainMenuCallback
+from aiogram_mailing.ui.keyboards.callbacks.menu import MailingMainMenuActionEnum
 from aiogram_mailing.ui.texts.base import MailingMenuButtons
 
 
 def close_button(texts: MailingMenuButtons) -> InlineKeyboardButton:
     return InlineKeyboardButton(
         text=texts.close_menu,
-        callback_data=MailingMenuCallback(
-            action=MailingMenuActionEnum.CLOSE
+        callback_data=MailingMainMenuCallback(
+            action=MailingMainMenuActionEnum.CLOSE
         )()
     )
 

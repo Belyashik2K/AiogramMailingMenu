@@ -10,6 +10,8 @@ from .database.helper import SQLAlchemyDatabaseHelper
 from .database.models.base import Base
 from aiogram_mailing.core.interfaces import MailingUsersSource
 from .ui.handlers import register_handlers
+from .ui.middlewares.outer.database import DBMiddleware
+from .ui.middlewares.outer.service import MailingServiceMiddleware
 from .ui.texts import MailingMenuTexts
 
 
@@ -65,8 +67,32 @@ class AiogramMailingMenu:
     def database_path(self) -> str:
         return self._database_path
 
+    async def _setup_middlewares(
+            self,
+            mailing_router: Router
+    ) -> None:
+        db_middleware = DBMiddleware(
+            database_helper=self._db_helper,
+            data_source=self._data_source,
+        )
+        service_middleware = MailingServiceMiddleware()
+
+        all_middlewares = [
+            db_middleware,
+            service_middleware,
+        ]
+
+        for middleware in all_middlewares:
+            mailing_router.message.middleware(middleware)
+            mailing_router.callback_query.middleware(middleware)
+
     async def setup(self) -> None:
         async with self._db_helper.engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
 
-        await register_handlers(self, self._menu_texts)
+        mailing_router = await register_handlers(
+            router=self._router,
+            command=self._command,
+            texts=self._menu_texts,
+        )
+        await self._setup_middlewares(mailing_router)

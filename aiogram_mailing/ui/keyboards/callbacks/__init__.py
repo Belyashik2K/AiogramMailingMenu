@@ -1,1 +1,1 @@
-from .menu import MailingMenuCallback
+from .menu import MailingMainMenuCallback

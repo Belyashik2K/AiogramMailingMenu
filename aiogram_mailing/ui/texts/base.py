@@ -22,10 +22,13 @@ class MailingMenuButtons:
 @dataclass(slots=True)
 class MailingMenuMessages:
     mailing_main_menu: str
-    mailing_info_text: str
 
-    mailing_scheduled_at: str
+    mailing_info_text: str
+    mailing_scheduled: str
     mailing_not_scheduled: str
+
+    property_set: str
+    property_not_set: str
 
 
 @dataclass(slots=True)

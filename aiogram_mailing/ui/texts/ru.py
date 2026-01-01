@@ -29,22 +29,31 @@ mailing_main_menu_text = """
 
 Выберите действие в меню ниже:
 """
-mailing_info_text = """
-*Информация о рассылке №{mailing_id}:*
-— 📄 Текст: {text_exists}
-— 🖼️ Медиа: {current_media_count}/{max_media_count}
-— 📌 Кнопок: {current_buttons_count}/{max_buttons_count}
-— {scheduled_at_info}
-"""
 
-mailing_scheduled_at = "⏰ Рассылка *запланирована* на: `{scheduled_at}`"
-mailing_not_scheduled = "⏰ Рассылка *не запланирована*"
+mailing_info_text = """
+ℹ️ *Информация о рассылке `№{mailing_id}`:*
+├ 📄 Текст: {text_exists}
+├ 🖼️ Медиа: {current_media_count}/{max_media_count}
+└ 📌 Кнопок: {current_buttons_count}/{max_buttons_count}
+
+⏰ Планировщик рассылки:
+{scheduled_at_info}
+"""
+mailing_scheduled = """├ Статус: *запланирована*
+└ Дата и время: `{scheduled_at}`
+"""
+mailing_not_scheduled = """└ Статус: *не запланирована*"""
+
+property_set = "✅ Установлено"
+property_not_set = "❌ Не установлено"
 
 RU_MESSAGES = MailingMenuMessages(
     mailing_main_menu=mailing_main_menu_text,
     mailing_info_text=mailing_info_text,
-    mailing_scheduled_at=mailing_scheduled_at,
+    mailing_scheduled=mailing_scheduled,
     mailing_not_scheduled=mailing_not_scheduled,
+    property_set=property_set,
+    property_not_set=property_not_set,
 )
 
 # ============================

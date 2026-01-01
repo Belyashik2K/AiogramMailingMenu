@@ -6,14 +6,14 @@ def build_mailing_info_text(
         mailing: MailingModel,
         texts: MailingMenuMessages,
 ) -> str:
-    text_exists = "✅ Есть" if mailing.text else "❌ Нет"
+    text_exists = texts.property_set if mailing.text else texts.property_not_set
     current_media_count = 0
     current_buttons_count = 0
     max_media_count = 10
     max_buttons_count = 5
 
     if mailing.scheduled_at:
-        scheduled_at_info = texts.mailing_scheduled_at.format(
+        scheduled_at_info = texts.mailing_scheduled.format(
             scheduled_at=mailing.scheduled_at.strftime("%Y-%m-%d %H:%M:%S")
         )
     else:

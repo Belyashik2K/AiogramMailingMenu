@@ -30,15 +30,15 @@ mailing_main_menu_text = """
 Выберите действие в меню ниже:
 """
 mailing_info_text = """
-*Информация о рассылке:*
-— Текст: {text_exists}
-— Медиа: {current_media_count}/{max_media_count}
-— Кнопки: {current_buttons_count}/{max_buttons_count}
+*Информация о рассылке №{mailing_id}:*
+— 📄 Текст: {text_exists}
+— 🖼️ Медиа: {current_media_count}/{max_media_count}
+— 📌 Кнопок: {current_buttons_count}/{max_buttons_count}
 — {scheduled_at_info}
 """
 
-mailing_scheduled_at = "⏰ Рассылка запланирована на: {scheduled_at}"
-mailing_not_scheduled = "⏰ Рассылка не запланирована"
+mailing_scheduled_at = "⏰ Рассылка *запланирована* на: `{scheduled_at}`"
+mailing_not_scheduled = "⏰ Рассылка *не запланирована*"
 
 RU_MESSAGES = MailingMenuMessages(
     mailing_main_menu=mailing_main_menu_text,

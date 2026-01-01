@@ -16,7 +16,9 @@ from aiogram_mailing.ui.keyboards.builders.main import (
 from aiogram_mailing.ui.keyboards.callbacks import MailingMainMenuCallback
 from aiogram_mailing.ui.keyboards.callbacks.menu import MailingMainMenuActionEnum
 from aiogram_mailing.ui.texts import MailingMenuTexts
-from aiogram_mailing.ui.utils.texts import build_menu_text
+from aiogram_mailing.ui.utils.texts import (
+    build_mailing_info_text,
+)
 
 
 async def register_handlers(
@@ -81,7 +83,7 @@ async def register_handlers(
             am_mailing_service: MailingService,
     ) -> None:
         mailing = await am_mailing_service.create_mailing()
-        menu_text = build_menu_text(
+        menu_text = build_mailing_info_text(
             mailing=mailing,
             texts=texts.messages,
         )

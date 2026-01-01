@@ -2,11 +2,11 @@ from aiogram_mailing.database.models import MailingModel
 from aiogram_mailing.ui.texts.base import MailingMenuMessages
 
 
-def build_menu_text(
+def build_mailing_info_text(
         mailing: MailingModel,
         texts: MailingMenuMessages,
 ) -> str:
-    text_exists = "✅ Есть" if True else "❌ Нет"
+    text_exists = "✅ Есть" if mailing.text else "❌ Нет"
     current_media_count = 0
     current_buttons_count = 0
     max_media_count = 10
@@ -20,6 +20,7 @@ def build_menu_text(
         scheduled_at_info = texts.mailing_not_scheduled
 
     return texts.mailing_info_text.format(
+        mailing_id=mailing.id,
         text_exists=text_exists,
         current_media_count=current_media_count,
         max_media_count=max_media_count,

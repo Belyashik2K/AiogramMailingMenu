@@ -5,10 +5,10 @@ from typing import (
 
 from aiogram_mailing import MailingUsersSource
 from aiogram_mailing.core.errors import MailingMenuError
+from aiogram_mailing.database.models import MailingModel
 
 if TYPE_CHECKING:
     # It should be an interface, but I want keep it simple for now
-    from aiogram_mailing.database.models import MailingModel
     from aiogram_mailing.database.repository import MailingRepository
 
 
@@ -32,6 +32,10 @@ class MailingService:
         if not mailings:
             raise MailingMenuError("No mailings found")
         return mailings
+
+    async def create_mailing(self) -> "MailingModel":
+        mailing_model = MailingModel()
+        return await self._repository.save(mailing_model)
 
     async def set_new_text(self, mailing_id: int, new_text: str | None) -> None:
         mailing = await self.get_mailing(mailing_id)

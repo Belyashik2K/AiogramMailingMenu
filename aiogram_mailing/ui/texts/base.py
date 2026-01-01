@@ -15,12 +15,14 @@ class MailingMenuButtons:
     create_mailing: str
     menu_author_link: str
 
+    back: str
     close_menu: str
 
 
 @dataclass(slots=True)
 class MailingMenuMessages:
     mailing_main_menu: str
+    mailing_info_text: str
 
     mailing_scheduled_at: str
     mailing_not_scheduled: str

@@ -29,4 +29,5 @@ class MailingRepository:
     async def save(self, mailing: MailingModel) -> MailingModel:
         merged_data = await self._session.merge(mailing)
         await self._session.flush()
+        await self._session.commit()
         return merged_data

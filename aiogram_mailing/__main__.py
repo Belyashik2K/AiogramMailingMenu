@@ -25,10 +25,12 @@ class AiogramMailingMenu:
             command: str = 'mailing',
             database_path: str | Path = Path('data/aiogram_mailing.db'),
             menu_language: Literal['en', 'ru'] = 'ru',
+            button_callback_data: str | None = None,
     ) -> None:
         self._router = router
         self._data_source = data_source
         self._command = command
+        self._button_callback_data = button_callback_data
         self._database_path = self._validate_path(database_path)
         self._menu_texts: MailingMenuTexts = MailingMenuTexts.from_code(menu_language)
 
@@ -67,6 +69,10 @@ class AiogramMailingMenu:
     def database_path(self) -> str:
         return self._database_path
 
+    @property
+    def button_callback_data(self) -> str:
+        return self._button_callback_data
+
     async def _setup_middlewares(
             self,
             mailing_router: Router
@@ -93,6 +99,7 @@ class AiogramMailingMenu:
         mailing_router = await register_handlers(
             router=self._router,
             command=self._command,
+            button_callback_data=self._button_callback_data,
             texts=self._menu_texts,
         )
         await self._setup_middlewares(mailing_router)
